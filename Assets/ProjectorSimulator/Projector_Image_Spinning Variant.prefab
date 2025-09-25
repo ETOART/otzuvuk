@@ -138,31 +138,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4418985114171644, guid: 2c1558f5aeda9c848b5bff184ad6bd99, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.5460375
+      value: 4.9446363
       objectReference: {fileID: 0}
     - target: {fileID: 4418985114171644, guid: 2c1558f5aeda9c848b5bff184ad6bd99, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.658795
+      value: 7.052186
       objectReference: {fileID: 0}
     - target: {fileID: 4418985114171644, guid: 2c1558f5aeda9c848b5bff184ad6bd99, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.7087593
+      value: 26.989487
       objectReference: {fileID: 0}
     - target: {fileID: 4418985114171644, guid: 2c1558f5aeda9c848b5bff184ad6bd99, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.35586387
+      value: -0.00679332
       objectReference: {fileID: 0}
     - target: {fileID: 4418985114171644, guid: 2c1558f5aeda9c848b5bff184ad6bd99, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.016666621
+      value: -0.0011115503
       objectReference: {fileID: 0}
     - target: {fileID: 4418985114171644, guid: 2c1558f5aeda9c848b5bff184ad6bd99, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.9318509
+      value: 0.9868333
       objectReference: {fileID: 0}
     - target: {fileID: 4418985114171644, guid: 2c1558f5aeda9c848b5bff184ad6bd99, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.06882694
+      value: -0.16159461
       objectReference: {fileID: 0}
     - target: {fileID: 4418985114171644, guid: 2c1558f5aeda9c848b5bff184ad6bd99, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -206,15 +206,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 108563554351088794, guid: 2c1558f5aeda9c848b5bff184ad6bd99, type: 3}
       propertyPath: m_Intensity
-      value: 15
+      value: 44.4
       objectReference: {fileID: 0}
     - target: {fileID: 108563554351088794, guid: 2c1558f5aeda9c848b5bff184ad6bd99, type: 3}
       propertyPath: m_SpotAngle
-      value: 38.795628
+      value: 64.010765
       objectReference: {fileID: 0}
     - target: {fileID: 108563554351088794, guid: 2c1558f5aeda9c848b5bff184ad6bd99, type: 3}
       propertyPath: m_InnerSpotAngle
-      value: 38.795628
+      value: 64.010765
       objectReference: {fileID: 0}
     - target: {fileID: 108563554351088794, guid: 2c1558f5aeda9c848b5bff184ad6bd99, type: 3}
       propertyPath: m_Shadows.m_NearPlane
@@ -222,7 +222,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114659279289944728, guid: 2c1558f5aeda9c848b5bff184ad6bd99, type: 3}
       propertyPath: shift_v
-      value: -8.48
+      value: -28.55
       objectReference: {fileID: 0}
     - target: {fileID: 114659279289944728, guid: 2c1558f5aeda9c848b5bff184ad6bd99, type: 3}
       propertyPath: keystoneH
@@ -234,7 +234,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114659279289944728, guid: 2c1558f5aeda9c848b5bff184ad6bd99, type: 3}
       propertyPath: brightness
-      value: 15
+      value: 44.4
       objectReference: {fileID: 0}
     - target: {fileID: 114659279289944728, guid: 2c1558f5aeda9c848b5bff184ad6bd99, type: 3}
       propertyPath: cookieSize
@@ -242,7 +242,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114659279289944728, guid: 2c1558f5aeda9c848b5bff184ad6bd99, type: 3}
       propertyPath: throwRatio
-      value: 1.42
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 114659279289944728, guid: 2c1558f5aeda9c848b5bff184ad6bd99, type: 3}
       propertyPath: aspectRatio
@@ -258,11 +258,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114659279289944728, guid: 2c1558f5aeda9c848b5bff184ad6bd99, type: 3}
       propertyPath: vignetteSize
-      value: 0.336
+      value: 0.409
       objectReference: {fileID: 0}
     - target: {fileID: 114659279289944728, guid: 2c1558f5aeda9c848b5bff184ad6bd99, type: 3}
       propertyPath: imageInterval
-      value: 2
+      value: 3.01
       objectReference: {fileID: 0}
     - target: {fileID: 114659279289944728, guid: 2c1558f5aeda9c848b5bff184ad6bd99, type: 3}
       propertyPath: showLightPath
