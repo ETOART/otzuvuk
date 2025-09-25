@@ -66,7 +66,7 @@ namespace ProjectorSimulator
         // the actual RenderTexture we send to the CookieCreator
         RenderTexture contentRT = null;
 
-        Light[] lights;
+        Light projectorLight;
         ThrowBuilder tb;
 
         bool isDirty = false;
@@ -78,15 +78,12 @@ namespace ProjectorSimulator
         // Use this for initialization
         void Awake()
         {
-            lights = GetComponentsInChildren<Light>(true);
+            projectorLight = GetComponentInChildren<Light>(true);
             tb = GetComponentInChildren<ThrowBuilder>(true);
-            if (!tb)
-                Debug.Log("No ThrowBuilder found! by " + gameObject.name);
 
-            foreach (Light l in lights)
-            {
-                l.gameObject.SetActive(false);
-            }
+            projectorLight.gameObject.SetActive(false);
+
+
 
             // if in editor edit mode, ensure preview image index is valid
             if (!Application.isPlaying)
@@ -159,7 +156,7 @@ namespace ProjectorSimulator
         {
             int cookieSizeInt = int.Parse(cookieSize.ToString().Substring(2));
             VignetteData vd = new VignetteData(useVignette, vignetteSize, vignetteFade, new Vector2(vignetteOffsetX, vignetteOffsetY), vignetteForceCircular, vignetteShape == VignetteShape.circle);
-            cookie = new Cookie(new CookieData(shift_v, shift_h, keystoneH, keystoneV, throwRatio, aspectRatio), cookieSizeInt, lights[0], lights[1], lights[2], vd, contentRT);
+            cookie = new Cookie(new CookieData(shift_v, shift_h, keystoneH, keystoneV, throwRatio, aspectRatio), cookieSizeInt, projectorLight, vd, contentRT);
         }
 
         static RenderTexture CreateRenderTexture(int height, int width, int depth)
@@ -188,9 +185,7 @@ namespace ProjectorSimulator
         // When enabled, turn lights on. Also start slideshow if necessary.
         void OnEnable()
         {
-            lights[0].gameObject.SetActive(true);
-            lights[1].gameObject.SetActive(true);
-            lights[2].gameObject.SetActive(true);
+            projectorLight.gameObject.SetActive(true);
 
             if (showLightPath)
                 tb.gameObject.SetActive(true);
@@ -199,11 +194,7 @@ namespace ProjectorSimulator
         // When disabled, turn lights off
         void OnDisable()
         {
-            foreach (Light l in lights)
-            {
-                l.gameObject.SetActive(false);
-            }
-
+            projectorLight.gameObject.SetActive(false);
             tb.gameObject.SetActive(false);
         }
 
@@ -278,9 +269,7 @@ namespace ProjectorSimulator
         /// </summary>
         void AssignLightCookies()
         {
-            lights[0].cookie = cookie.GetRedCookie();
-            lights[1].cookie = cookie.GetGreenCookie();
-            lights[2].cookie = cookie.GetBlueCookie();
+            projectorLight.cookie = cookie.GetCookie();
         }
 
         public void AdvanceSlideshow()
@@ -383,11 +372,8 @@ namespace ProjectorSimulator
 
         public void UpdateSpotlight() 
         {
-            foreach (Light l in lights)
-            {
-                l.intensity = brightness;
-                l.range = range;
-            }
+            projectorLight.intensity = brightness;
+            projectorLight.range = range;
         }
 
         public void UpdateLightpath()

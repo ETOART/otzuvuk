@@ -49,35 +49,33 @@ namespace ProjectorSimulator
         CookieData data;
         float imageWidth, imageHeight;
         float maxImageEdgeDistance;
-        Texture redCookie, greenCookie, blueCookie;
+        Texture cookie;
 
         // used for calculating angle
         const float distance = 10.0f; // throw distance
         int textureSize = 1024; // texture width and height
 
-        Light redLight, greenLight, blueLight;
+        Light projectorLight;
 
         VignetteData _vignetteData;
         RenderTexture buf2;
         bool buf1 = true;
 
         // shaders which strip the individual channels, offloading to gpu
-        static Material singlePassR, singlePassG, singlePassB;
+        static Material singlePassShader;
         Vector2 cookieSpaceScale, cookieSpaceOffset;
 
         static Material keystoneShader;
         static Material vignetteShader;
 
-        public Cookie(CookieData cookieData, int cookieSize, Light red, Light green, Light blue, VignetteData vignetteData, RenderTexture imageToProject = null)
+        public Cookie(CookieData cookieData, int cookieSize, Light spotlight, VignetteData vignetteData, RenderTexture imageToProject = null)
         {
             textureSize = cookieSize;
             projectedImage = imageToProject;
 
             CreateTexture();
 
-            redLight = red;
-            greenLight = green;
-            blueLight = blue;
+            projectorLight = spotlight;
             data = cookieData;
             _vignetteData = vignetteData;
             Initialise();
@@ -87,19 +85,11 @@ namespace ProjectorSimulator
         {
             RenderTexture temp;
 
-            temp = redCookie as RenderTexture;
-            if (temp)
-            {
-                temp.Release();
-                temp = greenCookie as RenderTexture;
-                temp.Release();
-                temp = blueCookie as RenderTexture;
-                temp.Release();
-            }
+            temp = cookie as RenderTexture;
+            if (temp) temp.Release();
 
             temp = buf2;
-            if (temp)
-                temp.Release();
+            if (temp) temp.Release();
         }
 
         /// <summary>
@@ -107,10 +97,8 @@ namespace ProjectorSimulator
         /// </summary>
         void CreateTexture()
         {
-            redCookie = new RenderTexture(textureSize, textureSize, 0, RenderTextureFormat.ARGB32);
-            greenCookie = new RenderTexture(textureSize, textureSize, 0, RenderTextureFormat.ARGB32);
-            blueCookie = new RenderTexture(textureSize, textureSize, 0, RenderTextureFormat.ARGB32);
-            redCookie.wrapMode = greenCookie.wrapMode = blueCookie.wrapMode = TextureWrapMode.Clamp;
+            cookie = new RenderTexture(textureSize, textureSize, 0, RenderTextureFormat.ARGB32);
+            cookie.wrapMode = TextureWrapMode.Clamp;
         }
 
         /// <summary>
@@ -119,25 +107,17 @@ namespace ProjectorSimulator
         void Initialise()
         {
             // get shaders
-            if (singlePassR == null)
+            if (singlePassShader == null)
             {
                 // on first import the shader fails to be found, so check it's here before continuing
                 var shader = Shader.Find("Hidden/ProjectorSimSinglePass");
                 if (shader == null)
                     return;
 
-                singlePassR = new Material(Shader.Find("Hidden/ProjectorSimSinglePass"));
-                singlePassG = new Material(Shader.Find("Hidden/ProjectorSimSinglePass"));
-                singlePassB = new Material(Shader.Find("Hidden/ProjectorSimSinglePass"));
-
-                singlePassR.SetInt("_Channel", 0);
-                singlePassG.SetInt("_Channel", 1);
-                singlePassB.SetInt("_Channel", 2);
-
-                vignetteShader = new Material(Shader.Find("Hidden/ProjectorSimVignette"));
-                keystoneShader = new Material(Shader.Find("Hidden/ProjectorSimKeystone"));
+                singlePassShader = new Material(Shader.Find("Hidden/ProjectorSimSinglePass"));
+                vignetteShader   = new Material(Shader.Find("Hidden/ProjectorSimVignette"));
+                keystoneShader   = new Material(Shader.Find("Hidden/ProjectorSimKeystone"));
             }
-
 
             if (projectedImage == null)
             {
@@ -155,14 +135,15 @@ namespace ProjectorSimulator
             float shift_H = imageWidth * (data.shift_h / 200.0f);
             float shift_V = imageHeight * (data.shift_v / 200.0f);
 
-            // calculate how far the image can move with full lens shift applied (in meters from lens centre)
+            // calculate the furthest image edge with  lens shift applied (in meters from lens centre)
             float imageLimit_h = (imageWidth / 2.0f) + Mathf.Abs(shift_H);
             float imageLimit_v = (imageHeight / 2.0f) + Mathf.Abs(shift_V);
             maxImageEdgeDistance = Mathf.Max(imageLimit_h, imageLimit_v);
 
-            // Calculate the light angle required
+            // Calculate the spotlight angle (TODO: scale by magic 0.3535533906f ratio)
             float spotAngle = Mathf.Atan(maxImageEdgeDistance / distance) * 2 * Mathf.Rad2Deg;
-            redLight.spotAngle = greenLight.spotAngle = blueLight.spotAngle = spotAngle;
+            //spotAngle *= 1.4142135623f;
+            projectorLight.innerSpotAngle = projectorLight.spotAngle = spotAngle;
 
             // calculate extent of spotlight coverage at our arbitrary distance
             float totalHeight = distance * Mathf.Tan((spotAngle / 2) * Mathf.Deg2Rad) * 2;
@@ -247,9 +228,14 @@ namespace ProjectorSimulator
 
             Shader.SetGlobalInt("_PJSimCookieSize", textureSize);
             Shader.SetGlobalVector("_PJSimTransform", new Vector4(cookieSpaceScale.x, cookieSpaceScale.y, cookieSpaceOffset.x, cookieSpaceOffset.y));
-            Graphics.Blit(buf1 ? buf2 : projectedImage, redCookie as RenderTexture, singlePassR);
-            Graphics.Blit(buf1 ? buf2 : projectedImage, greenCookie as RenderTexture, singlePassG);
-            Graphics.Blit(buf1 ? buf2 : projectedImage, blueCookie as RenderTexture, singlePassB);
+            Graphics.Blit(buf1 ? buf2 : projectedImage, buf1 ? projectedImage : buf2, singlePassShader);
+
+            buf1 = !buf1;
+
+            // scale to inside spotlight circle for URP
+            float scale = 1.4142135623f;   // magic number, do not change
+            float offset = -0.2071067812f; // magic number, do not change
+            Graphics.Blit(buf1 ? buf2 : projectedImage, cookie as RenderTexture, new Vector2(scale, scale), new Vector2(offset, offset));
         }
 
         /// <summary>
@@ -270,8 +256,6 @@ namespace ProjectorSimulator
             Initialise();
         }
 
-        public Texture GetRedCookie() { return redCookie; }
-        public Texture GetGreenCookie() { return greenCookie; }
-        public Texture GetBlueCookie() { return blueCookie; }
+        public Texture GetCookie() { return cookie; }
     }
 }

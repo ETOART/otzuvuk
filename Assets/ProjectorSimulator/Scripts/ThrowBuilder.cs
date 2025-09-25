@@ -70,6 +70,7 @@ namespace ProjectorSimulator
 
             // recalculate vertex positions at new distance
             imageWidth = maxFoundDistance / throwRatio;
+            imageWidth *= 0.7071067812f;
             imageHeight = imageWidth / aspect;
             rightEdge = (imageWidth / 2.0f) + (imageWidth * shift_percentage.x / 200f);
             topEdge = (imageHeight / 2.0f) + (imageHeight * shift_percentage.y / 200f);

@@ -3,12 +3,15 @@
 	Properties
 	{
 		_MainTex ("Texture", 2D) = "white" {}
+		_Channel("Channel Index", int) = 0
 	}
 
 		SubShader
 	{
 		Pass
 		{
+			ZTest Always // required for WebGL
+
 			CGPROGRAM
 			#pragma vertex vert_img
 			#pragma fragment frag
