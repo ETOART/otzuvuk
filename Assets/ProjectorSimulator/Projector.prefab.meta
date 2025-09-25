@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 2c1558f5aeda9c848b5bff184ad6bd99
+timeCreated: 1597316302
+licenseType: Store
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 86123
+  packageName: Projector Simulator
+  packageVersion: 1.6.1
+  assetPath: Assets/ProjectorSimulator/Projector.prefab
+  uploadId: 759651

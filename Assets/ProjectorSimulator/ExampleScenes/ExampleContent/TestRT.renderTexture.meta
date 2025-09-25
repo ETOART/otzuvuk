@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 88fc8c489262e5f418de0ba95cd5418d
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 8400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 86123
+  packageName: Projector Simulator
+  packageVersion: 1.6.1
+  assetPath: Assets/ProjectorSimulator/ExampleScenes/ExampleContent/TestRT.renderTexture
+  uploadId: 759651

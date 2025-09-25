@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 5c3772fb982506a448f822ffdefa41ed
+timeCreated: 1543338476
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 86123
+  packageName: Projector Simulator
+  packageVersion: 1.6.1
+  assetPath: Assets/ProjectorSimulator/ExampleScenes/ExampleContent/Materials/obstacle.mat
+  uploadId: 759651

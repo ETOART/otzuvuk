@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 8dc155bf043d92c45b4ff4a38d9b00bb
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 12385, guid: 0000000000000000e000000000000000, type: 0}
+  disableValidation: 0
+AssetOrigin:
+  serializedVersion: 1
+  productId: 86123
+  packageName: Projector Simulator
+  packageVersion: 1.6.1
+  assetPath: Assets/ProjectorSimulator/Scripts/Editor/UXML/Projector_Inspector_Style.uss
+  uploadId: 759651

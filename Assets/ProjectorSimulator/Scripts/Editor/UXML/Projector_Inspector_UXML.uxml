@@ -1,0 +1,46 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <Style src="project://database/Assets/ProjectorSimulator/Scripts/Editor/UXML/Projector_Inspector_Style.uss?fileID=7433441132597879392&amp;guid=8dc155bf043d92c45b4ff4a38d9b00bb&amp;type=3#Projector_Inspector_Style" />
+    <ui:Label text="Projection" display-tooltip-when-elided="true" name="LblProjector" class="header" />
+    <uie:PropertyField binding-path="aspectRatio" name="AspectRatio" tooltip="Aspect ratio of the projected image (width/height)" />
+    <uie:PropertyField binding-path="throwRatio" name="ThrowRatio" tooltip="Throw ratio of the projector (distance/image width) - smaller is wider" />
+    <uie:PropertyField binding-path="shift_h" name="LensShiftH" tooltip="Horizontal lens shift as a percentage of image width/2 (100% shift = lens level with image edge)" label="Shift H" />
+    <uie:PropertyField binding-path="shift_v" name="LensShiftV" tooltip="Vertical lens shift as a percentage of image height/2 (100% shift = lens level with image edge)" label="Shift V" />
+    <ui:Slider picking-mode="Ignore" label="Keystone H" value="0" high-value="1" name="KeystoneH" binding-path="keystoneH" low-value="-1" show-input-field="true" tooltip="Use this to make a trapezoidal image square again." />
+    <ui:Slider picking-mode="Ignore" label="Keystone V" value="0" high-value="1" name="KeystoneV" binding-path="keystoneV" low-value="-1" show-input-field="true" tooltip="Use this to make a trapezoidal image square again." />
+    <ui:Label text="Content" display-tooltip-when-elided="true" name="LblContentSettings" class="header" />
+    <uie:PropertyField binding-path="contentType" name="ContentType" tooltip="Type of content to project" />
+    <ui:VisualElement name="PnlImages">
+        <uie:PropertyField binding-path="previewImageIndex" name="PreviewImageIndex" tooltip="Zero-based index of the image to preview in the editor" />
+        <uie:PropertyField binding-path="imageInterval" name="ImageInterval" tooltip="The time to show each image, if more than one image is supplied. Otherwise this value is ignored." />
+        <uie:PropertyField binding-path="loop" name="Loop" tooltip="Whether to loop the slideshow. If false, the last image will remain once the slideshow is complete." />
+        <uie:PropertyField binding-path="images" name="Images" tooltip="Image(s) to project. If empty, only white will be projected." style="display: none;" />
+        <ui:VisualElement name="ImagesParent" />
+    </ui:VisualElement>
+    <ui:VisualElement name="PnlRT">
+        <uie:PropertyField binding-path="renderTexture" name="RenderTexture" tooltip="RenderTexture to project" />
+        <uie:PropertyField binding-path="framerate" name="Framerate" tooltip="Framerate of the projector. A negative value updates the image every frame." />
+    </ui:VisualElement>
+    <ui:VisualElement name="PnlVideo" style="display: flex;">
+        <uie:PropertyField name="VideoClip" binding-path="video" />
+        <uie:PropertyField name="AudioSource" binding-path="audioSource" />
+        <uie:PropertyField binding-path="loop" name="Loop" tooltip="Whether to loop the video playback" />
+        <uie:PropertyField binding-path="framerate" name="Framerate" tooltip="Framerate of the projector. A negative value updates the image every frame." />
+    </ui:VisualElement>
+    <uie:PropertyField binding-path="playOnAwake" name="PlayOnAwake" tooltip="Whether to play the content immediately." />
+    <uie:PropertyField binding-path="cookieSize" name="CookieSize" tooltip="The resolution of the Cookie texture. Higher will have better clarity in the image, lower will be faster to generate." />
+    <ui:Label text="Vignette" display-tooltip-when-elided="true" name="LblVignetteSettings" class="header" />
+    <uie:PropertyField binding-path="useVignette" name="UseVignette" label="Vignette?" />
+    <uie:PropertyField binding-path="vignetteShape" name="VignetteShape" label="Shape" />
+    <ui:Slider picking-mode="Ignore" label="Size" value="0.5" high-value="1" name="VignetteSize" binding-path="vignetteSize" low-value="0" show-input-field="false" />
+    <ui:Slider picking-mode="Ignore" label="Fade" value="0.5" high-value="1" name="VignetteFade" binding-path="vignetteFade" low-value="0" show-input-field="false" />
+    <ui:Slider picking-mode="Ignore" label="OffsetX" value="0.5" high-value="1" name="VignetteOffsetX" binding-path="vignetteOffsetX" low-value="0" show-input-field="false" />
+    <ui:Slider picking-mode="Ignore" label="OffsetY" value="0.5" high-value="1" name="VignetteOffsetY" binding-path="vignetteOffsetY" low-value="0" show-input-field="false" />
+    <uie:PropertyField binding-path="vignetteForceCircular" name="ForceCircular" tooltip="Forces a circular vignette to be a circle instead of an oval. Ignored for square vignette." />
+    <ui:Label text="Light Path" display-tooltip-when-elided="true" name="LblLightPath" class="header" />
+    <uie:PropertyField binding-path="showLightPath" name="ShowLightPath" tooltip="Toggles light path geometry. Light paths currently do not take keystoning into account." />
+    <uie:PropertyField binding-path="lightPathMaterial" name="LightPathMaterial" tooltip="The material of the light path." />
+    <uie:PropertyField binding-path="lightPathRange" name="LightPathRange" tooltip="The distance the light path reaches - 0 or below makes the light stop at the furthest geometry found at the image corners. This is most useful for curved screens when you want the light path to continue beyond the corners." />
+    <ui:Label text="Brightness" display-tooltip-when-elided="true" name="LblSpotlights" class="header" />
+    <uie:PropertyField binding-path="brightness" name="Intensity" tooltip="Allows control of the brightness of the projector" />
+    <uie:PropertyField binding-path="range" name="Range" tooltip="Controls the reach of the projector&apos;s light" />
+</ui:UXML>

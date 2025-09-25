@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 53de5bd1857f7bb40b82f950ce45d818
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 86123
+  packageName: Projector Simulator
+  packageVersion: 1.6.1
+  assetPath: Assets/ProjectorSimulator/Scripts/Resources/ProjectorSim_Keystone.shader
+  uploadId: 759651

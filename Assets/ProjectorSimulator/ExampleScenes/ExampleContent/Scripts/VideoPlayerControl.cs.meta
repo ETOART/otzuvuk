@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: acd667b7e289a624b84ed2d9f2fdceaa
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 86123
+  packageName: Projector Simulator
+  packageVersion: 1.6.1
+  assetPath: Assets/ProjectorSimulator/ExampleScenes/ExampleContent/Scripts/VideoPlayerControl.cs
+  uploadId: 759651

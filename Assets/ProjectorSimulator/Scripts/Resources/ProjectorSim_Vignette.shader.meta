@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 6ac434fc95111034eb7bc9a039702732
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 86123
+  packageName: Projector Simulator
+  packageVersion: 1.6.1
+  assetPath: Assets/ProjectorSimulator/Scripts/Resources/ProjectorSim_Vignette.shader
+  uploadId: 759651

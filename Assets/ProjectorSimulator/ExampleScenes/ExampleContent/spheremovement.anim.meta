@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5f40d06c05eeeea42a03421368032b3a
+timeCreated: 1486501707
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 86123
+  packageName: Projector Simulator
+  packageVersion: 1.6.1
+  assetPath: Assets/ProjectorSimulator/ExampleScenes/ExampleContent/spheremovement.anim
+  uploadId: 759651

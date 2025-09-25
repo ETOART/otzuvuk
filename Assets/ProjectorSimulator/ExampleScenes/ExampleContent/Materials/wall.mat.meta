@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 2d292655987fe844a8c18b7e30816d72
+timeCreated: 1486143304
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 86123
+  packageName: Projector Simulator
+  packageVersion: 1.6.1
+  assetPath: Assets/ProjectorSimulator/ExampleScenes/ExampleContent/Materials/wall.mat
+  uploadId: 759651
